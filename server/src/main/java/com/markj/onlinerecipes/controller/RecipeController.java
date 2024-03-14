@@ -20,9 +20,9 @@ public class RecipeController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/user/{userId}")
-    public Recipe createRecipe(@RequestBody Recipe recipe, @PathVariable Long userId) throws Exception{
-        User user=userService.findUserById(userId);
+    @PostMapping()
+    public Recipe createRecipe(@RequestBody Recipe recipe, @RequestHeader ("Authorization")String jwt) throws Exception{
+        User user=userService.findUserByJwt(jwt);
         Recipe createdRecipe=recipeService.createRecipe(recipe,user);
         return createdRecipe;
     }
@@ -51,9 +51,11 @@ public class RecipeController {
     }
 
 
-    @PutMapping("/{id}/like/user/{userId}")
-    public Recipe likeRecipe(@PathVariable Long userId, @PathVariable Long id) throws Exception{
-        User user=userService.findUserById(userId);
+    @PutMapping("/{id}/like")
+    public Recipe likeRecipe(@RequestHeader("Authorization") String jwt,
+                             @PathVariable Long id) throws Exception{
+
+        User user=userService.findUserByJwt(jwt);
         Recipe updatedRecipe=recipeService.likeRecipe(id, user);
         return updatedRecipe;
     }

@@ -2,6 +2,7 @@ package com.markj.onlinerecipes.service;
 
 import com.markj.onlinerecipes.model.User;
 import com.markj.onlinerecipes.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomUserDetailService implements UserDetailsService {
-
+public class CustomUserDetailsService implements UserDetailsService {
+    @Autowired
     private UserRepository userRepository;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
