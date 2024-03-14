@@ -88,6 +88,6 @@ public class RecipeServiceImplementation implements RecipeService {
         else {
             recipe.getLikes().add(user.getId());
         }
-        return null;
+        return recipeRepository.save(recipe);
     }
 }
