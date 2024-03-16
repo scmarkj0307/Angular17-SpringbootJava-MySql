@@ -1,0 +1,26 @@
+<form  (ngSubmit)="onSubmit()"  class="w-[27rem] p-6 rounded-lg shadow-md">
+
+    <div class="mb-4">
+        <mat-form-field class="w-full">
+            <mat-label>Shoe Name:</mat-label>
+            <input matInput 
+            placeholder="Enter shoe name" 
+            name="title"
+            [(ngModel)]="recipeItem.title"
+            class="py-2 px-3 text-gray-200 mt-1 focus:shadow-outline"
+            >
+          </mat-form-field>
+        
+          <!-- <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Enter description"></textarea>
+          </mat-form-field> -->
+    </div>
+
+    <div>
+      <button mat-raised-button color="primary" type="submit" class="text-black">
+        Create
+      </button>
+    </div>
+
+</form>
