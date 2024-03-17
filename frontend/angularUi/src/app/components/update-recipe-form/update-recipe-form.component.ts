@@ -6,24 +6,25 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
 
 @Component({
-  selector: 'app-create-recipe-form',
+  selector: 'app-update-recipe-form',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule,MatButtonModule,MatRadioModule],
-  templateUrl: './create-recipe-form.component.html',
-  styleUrl: './create-recipe-form.component.scss'
+  imports: [FormsModule, MatFormFieldModule, MatInputModule,MatButtonModule,MatRadioModule ],
+  templateUrl: './update-recipe-form.component.html',
+  styleUrl: './update-recipe-form.component.scss'
 })
-export class CreateRecipeFormComponent {
+export class UpdateRecipeFormComponent {
 
   recipeItem:any={
-    title:"",
-    description:"",
-    foodType:"",
-    image:""
+    title:"hey",
+    description:"hey",
+    foodType:"hey",
+    image:"hey"
 
   }
 
   onSubmit(){
     console.log("values",this.recipeItem)
   }
+
 
 }

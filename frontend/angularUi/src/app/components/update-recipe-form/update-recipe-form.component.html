@@ -1,3 +1,4 @@
+<h1 class="text-center pt-5 text-black">Update Recipe:</h1>
 <form  (ngSubmit)="onSubmit()"  class="w-[27rem] p-6 rounded-lg shadow-md">
 
     <div class="mb-4">
@@ -6,6 +7,7 @@
             <input matInput 
             placeholder="Enter shoe name" 
             name="title"
+            value="recipeItem.title"
             [(ngModel)]="recipeItem.title"
             class="py-2 px-3 text-gray-200 mt-1 focus:shadow-outline"
             >
@@ -16,6 +18,7 @@
             <textarea matInput 
             placeholder="Enter description" 
             name="description"
+            value="recipeItem.description"
             [(ngModel)]="recipeItem.description"
             class="py-2 px-3 text-gray-200 mt-1 focus:shadow-outline"
             ></textarea>
@@ -26,12 +29,13 @@
             <input matInput 
             placeholder="Enter Image Url" 
             name="image"
+            value="recipeItem.image"
             [(ngModel)]="recipeItem.image"
             class="py-2 px-3 text-gray-200 mt-1 focus:shadow-outline"
             >
           </mat-form-field>
 
-          <mat-radio-group [(ngModel)]="recipeItem.foodType" name="foodType"   aria-label="Select an option" color="primary">
+          <mat-radio-group [(ngModel)]="recipeItem.foodType" name="foodType" value="recipeItem.foodType"   aria-label="Select an option" color="primary">
             <mat-radio-button value="veg">Casual</mat-radio-button>
             <mat-radio-button value="non_veg">Sporty</mat-radio-button>
           </mat-radio-group>
