@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { AuthServiceService } from '../../services/Auth/auth-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,5 +12,18 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+
+  user:any;
+
+  constructor(public authService:AuthServiceService){}
+
+  ngOnInit(){
+    this.authService.authSubject.subscribe(
+      (auth)=>{
+        console.log("auth state ",auth)
+        this.user=auth.user
+      }
+    )
+  }
 
 }

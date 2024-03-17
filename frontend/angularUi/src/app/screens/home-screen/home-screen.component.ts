@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateRecipeFormComponent } from '../../components/create-recipe-form/create-recipe-form.component';
 
+
 @Component({
   selector: 'app-home-screen',
   standalone: true,
@@ -21,5 +22,6 @@ export class HomeScreenComponent {
   handleOpenCreateRecipeForm(){
     this.dialog.open(CreateRecipeFormComponent)
   }
+
 
 }

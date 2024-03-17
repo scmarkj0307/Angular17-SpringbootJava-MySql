@@ -4,6 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormControl, FormGroup, FormsModule, Validators,ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthServiceService } from '../../services/Auth/auth-service.service';
 
 
 @Component({
@@ -14,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './signin.component.scss'
 })
 export class SigninComponent {
+
+  constructor(public authService:AuthServiceService){}
 
   isRegister=true;
 
@@ -29,12 +32,26 @@ export class SigninComponent {
   }) 
 
   handleRegister(){
-    console.log("register", this.registrationForm.value)
+    this.authService.register(this.registrationForm.value).subscribe({
+      next:(response)=> {
+        localStorage.setItem("jwt",response.jwt);
+        this.authService.getUserProfile().subscribe();
+        console.log("Signup success",response)
+      }
+    })
   }
 
   handleLogin(){
-    console.log("register", this.loginForm)
+    this.authService.login(this.loginForm.value).subscribe({
+      next:(response)=> {
+        localStorage.setItem("jwt",response.jwt);
+        this.authService.getUserProfile().subscribe();
+        console.log("Login success",response)
+      }
+    })
   }
+
+  
 
   togglePanel(){
     this.isRegister=!this.isRegister

@@ -4,6 +4,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
 import { SigninComponent } from './screens/signin/signin.component';
+import { AuthServiceService } from './services/Auth/auth-service.service';
 
 
 
@@ -16,4 +17,16 @@ import { SigninComponent } from './screens/signin/signin.component';
 })
 export class AppComponent {
   title = 'angularUi';
+
+  user:any=null
+
+  constructor(public authService:AuthServiceService){}
+
+  ngOnInit(){
+    this.authService.authSubject.subscribe(
+      (auth)=>{
+        this.user=auth.user
+      }
+    )
+  }
 }
